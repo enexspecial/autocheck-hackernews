@@ -1,34 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { HackernewsService } from './hackernews.service';
-import { CreateHackernewDto } from './dto/create-hackernew.dto';
-import { UpdateHackernewDto } from './dto/update-hackernew.dto';
 
 @Controller('hackernews')
 export class HackernewsController {
   constructor(private readonly hackernewsService: HackernewsService) {}
 
-  @Post()
-  create(@Body() createHackernewDto: CreateHackernewDto) {
-    return this.hackernewsService.create(createHackernewDto);
+  @Get('get-top10-last25stories')
+  async getLast25Stories() {
+    // const response = await this.hackernewsService.getTop10Last25Stories();
+    // response.subscribe(async (data) => console.log(await data));
+    return await this.hackernewsService.getTop10Last25Stories();
   }
 
-  @Get()
-  findAll() {
-    return this.hackernewsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.hackernewsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHackernewDto: UpdateHackernewDto) {
-    return this.hackernewsService.update(+id, updateHackernewDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.hackernewsService.remove(+id);
+  @Get('get-title/:id')
+  getTitleByID(@Param('id') id: string) {
+    return this.hackernewsService.getTitleByID(+id);
   }
 }
