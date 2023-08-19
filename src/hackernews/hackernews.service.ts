@@ -5,11 +5,15 @@ import { DataproviderService } from '../dataprovider/dataprovider.service';
 export class HackernewsService {
   constructor(private readonly dataModel: DataproviderService) {}
 
-  getTop10Last25Stories() {
+  fetchLast25StoriesData() {
     return this.dataModel.top10Last25Stories();
   }
 
-  getTitleByID(param: number) {
-    return this.dataModel.getSingleTitle(param);
+  fetchLastWeekData() {
+    return this.dataModel.top10LastWeekPost();
+  }
+
+  fetchtKarmaData() {
+    return this.dataModel.top10WithLeastKarma();
   }
 }

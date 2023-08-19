@@ -1,19 +1,22 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { HackernewsService } from './hackernews.service';
 
 @Controller('hackernews')
 export class HackernewsController {
   constructor(private readonly hackernewsService: HackernewsService) {}
 
-  @Get('get-top10-last25stories')
-  async getLast25Stories() {
-    // const response = await this.hackernewsService.getTop10Last25Stories();
-    // response.subscribe(async (data) => console.log(await data));
-    return await this.hackernewsService.getTop10Last25Stories();
+  @Get('last-25-stories')
+  async last25Stories() {
+    return await this.hackernewsService.fetchLast25StoriesData();
   }
 
-  @Get('get-title/:id')
-  getTitleByID(@Param('id') id: string) {
-    return this.hackernewsService.getTitleByID(+id);
+  @Get('last-week')
+  async lastWeek() {
+    return await this.hackernewsService.fetchLastWeekData();
+  }
+
+  @Get('last-600-stories-with-least-karma')
+  async leastKarmaTitle() {
+    return await this.hackernewsService.fetchtKarmaData();
   }
 }
