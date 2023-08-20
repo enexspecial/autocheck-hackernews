@@ -85,10 +85,11 @@ export class HackerNewsService {
     return this.extractTopWordsFromTitles(titles, 10);
   }
 
+  // todo: imporve on performance consider
   public async getTopWordsInLast600Stories() {
     const topStoriesIds = await this.fetchTopStoriesIds();
     let titles: string[] = [];
-    const batchSize = 20;
+    const batchSize = 10;
     for (let i = 0; i < 600; i += batchSize) {
       const batchIds = topStoriesIds.slice(i, i + batchSize);
       const stories = await Promise.all(
