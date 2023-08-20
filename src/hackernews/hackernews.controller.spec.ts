@@ -1,20 +1,43 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { HackernewsController } from './hackernews.controller';
-import { HackernewsService } from './hackernews.service';
+import { HackerNewsController } from './hackernews.controller';
+import { HackerNewsService } from './hackernews.service';
 
 describe('HackernewsController', () => {
-  let controller: HackernewsController;
+  let controller: HackerNewsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [HackernewsController],
-      providers: [HackernewsService],
+      controllers: [HackerNewsController],
+      providers: [HackerNewsService],
     }).compile();
 
-    controller = module.get<HackernewsController>(HackernewsController);
+    controller = module.get<HackerNewsController>(HackerNewsController);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(controller.last25Stories).toBeDefined();
   });
+
+  // it('should return an array of Entity class', async () => {
+  //   const all: Entity[] = await controller.last25Stories();
+  //   expect(all.every((e) => e instanceof Entity)).toBeTruthy();
+  // });
+
+  it('should be defined', () => {
+    expect(controller.lastWeek).toBeDefined();
+  });
+
+  // it('should return an array of Entity class', async () => {
+  //   const all: Entity[] = await controller.lastWeek();
+  //   expect(all.every((e) => e instanceof Entity)).toBeTruthy();
+  // });
+
+  it('should be defined', () => {
+    expect(controller.leastKarmaTitle).toBeDefined();
+  });
+
+  // it('should return an array of Entity class', async () => {
+  //   const all: Entity[] = await controller.leastKarmaTitle();
+  //   expect(all.every((e) => e instanceof Entity)).toBeTruthy();
+  // });
 });

@@ -6,7 +6,15 @@ ___
 ### Installation guide
 
 <p> To run installation </p>
-> npm install
+ ```npm install```
+
+### Usage
+<p>To run the application you are to run this command on your terminal</p>
+<p>```npm run start``` </p> 
+
+<p> To run the application on test mode run this command on your terminal </p>
+<p>```npm run test```
+
 
 ### Endpoint
 The base url for this application is
@@ -16,3 +24,4 @@ The three endpoint of this task is as follows:
 * top-words/last-25-stories
 * top-words/last-week
 * top-words/last-600-stories
+
